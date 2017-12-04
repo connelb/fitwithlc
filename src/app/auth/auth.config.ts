@@ -17,3 +17,5 @@ export const AUTH_CONFIG: AuthConfig = {
   SCOPE: 'openid profile',
   NAMESPACE: 'http://brianazuretest2.azurewebsites.net/api/roles'
 };
+
+
