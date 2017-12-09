@@ -99,7 +99,6 @@ export class AuthService {
       this.userProfile = profile;
       this.isAdmin = this._checkAdmin(profile);
       localStorage.setItem('isAdmin', this.isAdmin.toString());
-      console.log('myProfile',profile);
     }
     // Update login status in loggedIn$ stream
     this.setLoggedIn(true);

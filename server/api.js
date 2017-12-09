@@ -10,7 +10,7 @@ const Event = require('./models/Event');
 const Rsvp = require('./models/Rsvp');
 
 
-/*
+/* 
  |--------------------------------------
  | Authentication Middleware
  |--------------------------------------
@@ -23,13 +23,18 @@ module.exports = function(app, config) {
       cache: true,
       rateLimit: true,
       jwksRequestsPerMinute: 5,
-      jwksUri: `https://${config.AUTH0_DOMAIN}/.well-known/jwks.json`
+      //jwksUri: `https://${config.AUTH0_DOMAIN}/.well-known/jwks.json`
+      jwksUri: 'https://balance.auth0.com/.well-known/jwks.json'
+      
     }),
-    audience: config.AUTH0_API_AUDIENCE,
-    issuer: `https://${config.AUTH0_DOMAIN}/`,
+    //audience: config.AUTH0_API_AUDIENCE,
+    audience: 'http://brianazuretest2.azurewebsites.net',
+    issuer: 'https://balance.auth0.com/',
+    //issuer: `https://${config.AUTH0_DOMAIN}/`,
     algorithm: 'RS256'
   });
 
+  //app.use(jwtCheck);  5a25fc4499029f7e93ed9975
 
   // Check for an authenticated admin user
   const adminCheck = (req, res, next) => {
@@ -51,7 +56,8 @@ module.exports = function(app, config) {
 
   // GET API root
   app.get('/api/', (req, res) => {
-    res.send('API works');
+
+    res.send('API works')
   });
 
   // GET list of public events starting in the future
@@ -90,7 +96,7 @@ module.exports = function(app, config) {
   });
 
   // GET event by event ID
-  app.get('/api/event/:id', jwtCheck, (req, res) => {
+  app.get('/api/event/:id',jwtCheck,  (req, res) => { 
     Event.findById(req.params.id, (err, event) => {
       if (err) {
         return res.status(500).send({message: err.message});
