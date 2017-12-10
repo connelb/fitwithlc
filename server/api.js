@@ -27,7 +27,7 @@ module.exports = function(app, config) {
       
     }),
     //audience: config.AUTH0_API_AUDIENCE,
-    audience: 'http://brianazuretest2.azurewebsites.net',
+    audience: 'http://brianazuretest2.azurewebsites.net/api/',
     issuer: 'https://balance.auth0.com/',
     //issuer: `https://${config.AUTH0_DOMAIN}/`,
     algorithm: 'RS256'
