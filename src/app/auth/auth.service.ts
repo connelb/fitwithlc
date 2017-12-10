@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/observable/throw';
 import { ENV } from './../core/env.config';
 
 @Injectable()
