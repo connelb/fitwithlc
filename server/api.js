@@ -9,7 +9,6 @@ const jwks = require('jwks-rsa');
 const Event = require('./models/Event');
 const Rsvp = require('./models/Rsvp');
 
-
 /* 
  |--------------------------------------
  | Authentication Middleware
@@ -62,6 +61,7 @@ module.exports = function(app, config) {
 
   // GET list of public events starting in the future
   app.get('/api/events', (req, res) => {
+    //console.log(req,res);
     Event.find({viewPublic: true, startDatetime: { $gte: new Date() }},
       _eventListProjection, (err, events) => {
         let eventsArr = [];
