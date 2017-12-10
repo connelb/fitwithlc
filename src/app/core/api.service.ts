@@ -20,9 +20,24 @@ export class ApiService {
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
-      .get(`${ENV.BASE_API}events`)
+      //.get(`${ENV.BASE_API}events`)// added "/api/"
+      .get('http://brianazuretest2.azurewebsites.net/api/events')
       .catch(this._handleError);
   }
+
+  /* const root = './';
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(root, 'dist')));
+app.use('/api', routes);
+app.get('*', (req, res) => {
+  res.sendFile('dist/index.html', {root: root});
+});
+
+const port = process.env.PORT || '3000';
+app.listen(port, () => console.log(`API running on localhost:${port}`)); */
 
   // GET all events - private and public (admin only)
   getAdminEvents$(): Observable<EventModel[]> {
