@@ -20,12 +20,17 @@ export class ApiService {
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
-      .get(`${ENV.BASE_API}events`,{responseType: 'text'})// added ,{responseType: 'text'}
+      .get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
       //.get('http://brianazuretest2.azurewebsites.net/api/events')
       .catch(this._handleError);
   }
 
-  /* const root = './';
+  /* 
+  httpClient.get('http://some.com/endpoint/', {headers: headers, responseType: 'text' }).subscribe(result => {
+    console.log(result);
+});
+  
+  const root = './';
 const app = express();
 
 app.use(bodyParser.json());
