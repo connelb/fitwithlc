@@ -20,7 +20,7 @@ export class ApiService {
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
-      .get(`${ENV.BASE_API}events`)// added "/api/"
+      .get(`${ENV.BASE_API}events`,{responseType: 'text'})// added ,{responseType: 'text'}
       //.get('http://brianazuretest2.azurewebsites.net/api/events')
       .catch(this._handleError);
   }

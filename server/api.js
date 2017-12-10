@@ -66,7 +66,7 @@ app.listen(port, () => console.log(`API running on localhost:${port}`)); */
  | API Routes
  |--------------------------------------
  */
-
+//return this.http.post(`http://10.0.1.19/login`, {email, password}, {responseType: 'text'})
   const _eventListProjection = 'title startDatetime endDatetime viewPublic';
 
   // GET API root
