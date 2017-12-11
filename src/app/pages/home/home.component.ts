@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.loading = true;
     // Get future, public events
     this.eventListSub = this.api
-      .getEvents$()
+      .getEvents1$()
       .subscribe(
         res => {
           console.log('res',res)

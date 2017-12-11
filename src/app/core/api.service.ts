@@ -7,6 +7,8 @@ import { ENV } from './env.config';
 import { EventModel } from './models/event.model';
 import { RsvpModel } from './models/rsvp.model';
 
+const api = '/api';
+
 @Injectable()
 export class ApiService {
   constructor(
@@ -17,10 +19,15 @@ export class ApiService {
     return `Bearer ${localStorage.getItem('access_token')}`;
   }
 
+  getEvents1$() {
+      return this.http.get<Array<EventModel>>(`${api}/events`)
+    }
+
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
-      .get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
+    .get(`${ENV.BASE_API}events`)
+      //.get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
       //.get('http://brianazuretest2.azurewebsites.net/api/events')
       .catch(this._handleError);
   }
