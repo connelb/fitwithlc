@@ -62,11 +62,14 @@ if (process.env.NODE_ENV !== 'dev') {
 
 require('./server/api')(app, config);
 
+const root = './';
+
 // Pass routing to Angular app
 // Don't run in dev
 if (process.env.NODE_ENV !== 'dev') {
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/dist/index.html'));
+    //res.sendFile(path.join(__dirname, '/dist/index.html'));
+    res.sendFile('dist/index.html', {root: root});
   });
 }
 
@@ -77,3 +80,23 @@ if (process.env.NODE_ENV !== 'dev') {
  */
 
 app.listen(port, () => console.log(`Server running on localhost:${port}`));
+
+
+/*
+
+
+const routes = require('./routes');
+
+const root = './';
+
+
+
+app.use(express.static(path.join(root, 'dist')));
+app.use('/api', routes);
+app.get('*', (req, res) => {
+  res.sendFile('dist/index.html', {root: root});
+});
+
+
+
+*/

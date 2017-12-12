@@ -8,6 +8,7 @@ import { EventModel } from './models/event.model';
 import { RsvpModel } from './models/rsvp.model';
 
 const api = '/api';
+const root = './';
 
 @Injectable()
 export class ApiService {
@@ -34,7 +35,7 @@ export class ApiService {
 
   /* 
   httpClient.get('http://some.com/endpoint/', {headers: headers, responseType: 'text' }).subscribe(result => {
-    console.log(result);
+    console.log(result);y
 });
   
   const root = './';
