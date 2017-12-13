@@ -80,23 +80,3 @@ if (process.env.NODE_ENV !== 'dev') {
  */
 
 app.listen(port, () => console.log(`Server running on localhost:${port}`));
-
-
-/*
-
-
-const routes = require('./routes');
-
-const root = './';
-
-
-
-app.use(express.static(path.join(root, 'dist')));
-app.use('/api', routes);
-app.get('*', (req, res) => {
-  res.sendFile('dist/index.html', {root: root});
-});
-
-
-
-*/
