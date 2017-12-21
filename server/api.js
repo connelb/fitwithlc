@@ -8,6 +8,8 @@ const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const Event = require('./models/Event');
 const Rsvp = require('./models/Rsvp');
+const Hero = require('./models/hero.model');
+const routes = require('./routes');
 
 /* 
  |--------------------------------------
@@ -27,7 +29,8 @@ module.exports = function(app, config) {
       
     }),
     //audience: config.AUTH0_API_AUDIENCE,
-    audience: 'http://brianazuretest2.azurewebsites.net/api/',
+    audience: 'http://brianazuretest2.azurewebsites.net',
+    //audience: 'http://brianazuretest2.azurewebsites.net/api/',
     issuer: 'https://balance.auth0.com/',
     //issuer: `https://${config.AUTH0_DOMAIN}/`,
     algorithm: 'RS256'
@@ -46,7 +49,29 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || '3000';
-app.listen(port, () => console.log(`API running on localhost:${port}`)); */
+app.listen(port, () => console.log(`API running on localhost:${port}`));
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const routes = require('./routes');
+
+const root = './';
+const port = process.env.PORT || '3000';
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(root, 'dist')));
+app.use('/api', routes);
+app.get('*', (req, res) => {
+  res.sendFile('dist/index.html', {root});
+});
+
+app.listen(port, () => console.log(`API running on localhost:${port}`));
+
+
+*/
 
 
   //app.use(jwtCheck);  5a25fc4499029f7e93ed9975
@@ -76,7 +101,8 @@ app.listen(port, () => console.log(`API running on localhost:${port}`)); */
   });
 
   // GET list of public events starting in the future
-  app.get('/api/events', (req, res) => {
+  //app.get('/api/hero', (req, res) => {
+    app.get('/api/events', (req, res) => {
     //console.log(req,res);
     Event.find({viewPublic: true, startDatetime: { $gte: new Date() }},
       _eventListProjection, (err, events) => {

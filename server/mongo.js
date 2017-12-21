@@ -5,10 +5,11 @@ const mongoose = require('mongoose');
  */
 mongoose.Promise = global.Promise;
 
-const env = require('./env/environment');
+const env = require('./config');
 
 // eslint-disable-next-line max-len
-const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`; //&replicaSet=globaldb`;
+//const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`; //&replicaSet=globaldb`;
+const mongoUri = `mongodb://briancosmosdb:om80PC7xPkBliz5pS9zqIBfC3NEnkLlzPHcUCvElmTZW7wAaU34AmjQYWncEfCQd0wCuTsu2YACsVu16pgZPMg==@briancosmosdb.documents.azure.com:10255/?ssl=true`;
 
 function connect() {
   mongoose.set('debug', true);
