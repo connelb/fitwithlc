@@ -20,8 +20,16 @@ export class ApiService {
     return `Bearer ${localStorage.getItem('access_token')}`;
   }
 
-  getEvents1$() {
+  getEvents2$() {
       return this.http.get<Array<EventModel>>(`${api}/events`)
+    }
+
+  getEvents1$(): Observable<EventModel[]> {
+      return this.http
+      .get(`${ENV.BASE_API}events`)
+        //.get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
+        //.get('http://brianazuretest2.azurewebsites.net/api/events')
+        .catch(this._handleError);
     }
 
   // GET list of public, future events
