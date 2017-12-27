@@ -104,8 +104,10 @@ app.listen(port, () => console.log(`API running on localhost:${port}`));
   //app.get('/api/hero', (req, res) => {
     app.get('/api/events', (req, res) => {
     //console.log(req,res);
+    //res.send(' app.get(/api/events');
     Event.find({viewPublic: true, startDatetime: { $gte: new Date() }},
       _eventListProjection, (err, events) => {
+        //res.send(' app.get(/api/events');
         let eventsArr = [];
         if (err) {
           return res.status(500).send({message: err.message});

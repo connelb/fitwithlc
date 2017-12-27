@@ -53,7 +53,7 @@ export class EventComponent implements OnInit, OnDestroy {
       .getEventById$(this.id)
       .subscribe(
         res => {
-          console.log('res',res);
+          console.log('res from _getEvent',res);
           this.event = res;
           this._setPageTitle(this.event.title);
           this.loading = false;

@@ -32,13 +32,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private _getEventList() {
+    console.log('calls this._getEventList()...')
     this.loading = true;
     // Get future, public events
     this.eventListSub = this.api
       .getEvents1$()
       .subscribe(
         res => {
-          console.log('res',res)
+          console.log('res oops',res);
           this.eventList = res;
           this.filteredEvents = res;
           this.loading = false;

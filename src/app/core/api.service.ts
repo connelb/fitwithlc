@@ -24,18 +24,19 @@ export class ApiService {
       return this.http.get<Array<EventModel>>(`${api}/events`)
     }
 
-  getEvents1$(): Observable<EventModel[]> {
+    // GET list of public, future events
+    //does not WORK!!!
+    getEvents1$(): Observable<EventModel[]> {
+      console.log('getEvents1$() called...');
       return this.http
-      .get(`${ENV.BASE_API}events`)
-        //.get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
-        //.get('http://brianazuretest2.azurewebsites.net/api/events')
+        .get(`${ENV.BASE_API}events`)
         .catch(this._handleError);
     }
 
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
-    .get(`${ENV.BASE_API}events`)
+    .get(`${ENV.BASE_API}/events`)
       //.get(`${ENV.BASE_API}events`,{responseType: 'json'})// added ,{responseType: 'json'}
       //.get('http://brianazuretest2.azurewebsites.net/api/events')
       .catch(this._handleError);

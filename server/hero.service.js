@@ -8,6 +8,7 @@ function getHeroes(req, res) {
   docquery
     .exec()
     .then(heroes => {
+      console.log('heros res');
       res.status(200).json(heroes);
     })
     .catch(error => {

@@ -19,4 +19,12 @@ router.delete('/hero/:id', (req, res) => {
   heroService.deleteHero(req, res);
 });
 
+
+//************************************** */
+  // GET API root
+  router.get('/api/', (req, res) => {
+    
+        res.send('API works')
+      });
+
 module.exports = router;
