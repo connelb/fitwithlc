@@ -28,7 +28,7 @@ RUN npm install --production --silent
 #Final image ========================================
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /usr
 COPY --from=express-server /app /usr/server
 COPY --from=angular-built /app/dist /usr/src/app
 ENV PORT 80
