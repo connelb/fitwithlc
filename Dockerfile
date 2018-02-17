@@ -36,4 +36,6 @@ COPY --from=angular-built /usr/dist /usr/dist
 EXPOSE 80 3000
 #EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
-CMD [ "node", "serve", "-g", "daemon off;" ]
+CMD [ "node", "server", "-g", "daemon off;" ]
+#CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
+#ENTRYPOINT ["init.sh"]
