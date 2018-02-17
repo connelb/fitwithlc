@@ -12,13 +12,15 @@ interface AuthConfig {
 export const AUTH_CONFIG: AuthConfig = {
   CLIENT_ID: 'seb7PkmMXqiZ3oXbjd76wJGpj1HtcSAn',
   CLIENT_DOMAIN: 'balance.auth0.com', // e.g., kmaida.auth0.com
-  AUDIENCE: 'http://brianazuretest2.azurewebsites.net/api/', // https://balance.auth0.com/api/v2/ e.g., http://localhost:8083/api/  http://brianazuretest2.azurewebsites.net/api/
+  AUDIENCE: 'https://webappcontainername.azurewebsites.net/api/', // https://balance.auth0.com/api/v2/ e.g., http://localhost:8083/api/  http://brianazuretest2.azurewebsites.net/api/
   REDIRECT: `${ENV.BASE_URI}/callback`,
   SCOPE: 'openid profile',
-  NAMESPACE: 'http://brianazuretest2.azurewebsites.net/api/roles'
+  NAMESPACE: 'https://webappcontainername.azurewebsites.net/api/roles'
 };
 
 /* 
+
+https://webappcontainername.azurewebsites.net
 
 http://brianazuretest2.azurewebsites.net
 Set Up an API
