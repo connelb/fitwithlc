@@ -21,15 +21,15 @@ RUN ng build --prod --build-optimizer
 
 #Express server =======================================
 FROM node:8.9-alpine as express-server
-WORKDIR /usr/src/app
-COPY /src/server /usr/src/app
+WORKDIR /usr
+COPY /server /usr/server
 RUN npm install --production --silent
 
 #Final image ========================================
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY --from=express-server /app /usr/src/app
+COPY --from=express-server /app /usr/server
 COPY --from=angular-built /app/dist /usr/src/app
 #ENV PORT 80
 EXPOSE 80 443
