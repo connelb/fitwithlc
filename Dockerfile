@@ -30,7 +30,7 @@ FROM node:8.9-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY --from=express-server /app /usr/src/app
-COPY --from=angular-built /usr/src/app/dist /usr/src/app
+COPY --from=angular-built /app/dist /usr/src/app
 #ENV PORT 80
 EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
