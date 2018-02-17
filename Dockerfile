@@ -33,7 +33,12 @@ RUN mkdir -p /usr/server
 WORKDIR /usr
 COPY --from=express-server /usr/server /usr/server
 COPY --from=angular-built /usr/dist /usr/dist
-EXPOSE 80 3000
+EXPOSE 8000 3000
+
+#COPY sshd_config /etc/ssh/
+#COPY init.sh /usr/local/bin/
+#RUN chmod u+x /usr/local/bin/init.sh
+
 #EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
 CMD [ "node", "server", "-g", "daemon off;" ]
