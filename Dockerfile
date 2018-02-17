@@ -31,7 +31,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY --from=express-server /app /usr/server
 COPY --from=angular-built /app/dist /usr/src/app
-#ENV PORT 80
-EXPOSE 80 443
+ENV PORT 80
+#EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
-CMD [ "node", "index.js", "-g", "daemon off;" ]
+CMD [ "node", "serve", "-g", "daemon off;" ]
