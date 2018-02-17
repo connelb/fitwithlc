@@ -41,6 +41,6 @@ EXPOSE 8000 3000
 
 #EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
-CMD [ "node", "server.js", "-g", "daemon off;" ]
+CMD [ "node", "server.js", "-g", "daemon off;" , "runserver", "0.0.0.0:8000"]
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 #ENTRYPOINT ["init.sh"]
