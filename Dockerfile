@@ -28,10 +28,11 @@ RUN npm install --production --silent
 
 #Final image ========================================
 FROM node:8.9-alpine
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/dist
+RUN mkdir -p /usr/server
 WORKDIR /usr
-#COPY --from=express-server /server /usr/server
-COPY --from=angular-built /dist /usr/src/app
+COPY --from=express-server /usr/server /usr/server
+COPY --from=angular-built /usr/dist /usr/dist
 ENV PORT 80
 #EXPOSE 80 443
 #ENV API_URL we-could-set-this-here-as-default
