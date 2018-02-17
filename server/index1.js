@@ -6,6 +6,7 @@ const routes = require('./routes');
 const root = './';
 const app = express();
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(root, 'dist')));
