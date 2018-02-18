@@ -2,6 +2,7 @@
 
 /server/config.js
 /server/env/*
+/config.js
 
 # compiled output
 /dist

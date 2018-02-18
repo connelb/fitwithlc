@@ -1,4 +1,5 @@
 FROM node:8.9-alpine as angular-built
+#RUN mkdir -p /app
 WORKDIR /app
 
 LABEL authors="Brian Connell"
@@ -21,30 +22,21 @@ RUN ng build --prod --build-optimizer
 
 #Express server =======================================
 FROM node:8.9-alpine as express-server
+#RUN mkdir -p /usr/src/
 WORKDIR /app
-COPY /src/server /app
+COPY /server /app
 RUN npm install --production --silent
+
 
 #Final image ========================================
 FROM node:6.11-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY --from=express-server /app /usr/src/app
-COPY --from=angular-app /app/dist /usr/src/app
+COPY --from=angular-built /app/dist /usr/src/app
 ENV PORT 80
 #ENV API_URL we-could-set-this-here-as-default
-CMD [ "node", "index.js" ]
-
-
-#COPY sshd_config /etc/ssh/
-#COPY init.sh /usr/local/bin/
-#RUN chmod u+x /usr/local/bin/init.sh
-
-#EXPOSE 80 443
-#ENV API_URL we-could-set-this-here-as-default
-#CMD [ "node", "server.js", "-g", "daemon off;" , "runserver", "0.0.0.0:8000"]
-#CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
-#ENTRYPOINT ["init.sh"]
+CMD [ "node", "node src/server/index.js" ]
 
 
 

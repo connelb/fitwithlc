@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require('cors');
 // Config
-const config = require('./server/config');
+const config = require('./config');
 
 /*
  |--------------------------------------
@@ -74,7 +74,7 @@ console.log("Server running at http://localhost:%d", port);
 */
 
 const app = express();
-const routes = require('./server/routes');
+const routes = require('./routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -99,7 +99,7 @@ if (process.env.NODE_ENV !== 'dev') {
  |--------------------------------------
  */
 
-require('./server/api')(app, config);
+require('./api')(app, config);
 
 const root = './';
 
@@ -107,7 +107,7 @@ const root = './';
 // Don't run in dev
 if (process.env.NODE_ENV !== 'dev') {
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/dist/index.html'));
+    res.sendFile(path.join(__dirname, './dist/index.html'));
     //res.sendFile('dist/index.html', {root: root});
   });
 }
