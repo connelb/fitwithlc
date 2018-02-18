@@ -30,7 +30,7 @@ COPY /src/server /usr/src/app
 
 
 #Final image ========================================
-FROM node:6.11-alpine
+FROM node:8.9-alpine
 WORKDIR /usr/src/app
 COPY --from=express-server /usr/src /usr/src
 COPY --from=angular-built /usr/src/app/dist ./
