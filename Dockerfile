@@ -1,6 +1,6 @@
 FROM node:8.9-alpine as angular-built
 #RUN mkdir -p /app
-WORKDIR /app
+WORKDIR /usr/src/app
 
 LABEL authors="Brian Connell"
 
@@ -15,29 +15,26 @@ RUN apk update \
 #Angular CLI
 RUN npm install -g @angular/cli@1.6.5
 
-COPY package.json /app
+COPY package.json ./
 RUN npm install --silent
-COPY . /app
+COPY . .
 RUN ng build --prod --build-optimizer
+
 
 #Express server =======================================
 FROM node:8.9-alpine as express-server
-#RUN mkdir -p /usr/src/
-WORKDIR /app
-COPY src/server /app
-RUN npm install --production --silent
+WORKDIR /usr/src/app
+COPY ["package.json", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
+COPY /src/server /usr/src/app
 
 
 #Final image ========================================
 FROM node:6.11-alpine
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY --from=express-server /app /usr/src/app
-COPY --from=angular-built /app/dist /usr/src/app
-ENV PORT 80
-#ENV API_URL we-could-set-this-here-as-default
-CMD [ "node", "node src/server/index.js" ]
-
-
+COPY --from=node-server /usr/src /usr/src
+COPY --from=client-app /usr/src/app/dist ./
+EXPOSE 3000
+CMD ["node", "index.js"]
 
 
