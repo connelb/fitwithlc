@@ -26,7 +26,9 @@ COPY /src/server /usr/src/app
 
 #Final image ========================================
 FROM node:8.9-alpine
-WORKDIR /usr/src/app
+WORKDIR /usr
+RUN mkdir -p /usr/src
+RUN mkdir -p /usr/dist
 COPY --from=express-server /usr/src/app /usr/src
 COPY --from=angular-built /usr/src/app/dist /usr/dist
 EXPOSE 3000
