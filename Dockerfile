@@ -24,7 +24,7 @@ RUN ng build --prod --build-optimizer
 FROM node:8.9-alpine as express-server
 #RUN mkdir -p /usr/src/
 WORKDIR /app
-COPY /server /app
+COPY src/server /app
 RUN npm install --production --silent
 
 
