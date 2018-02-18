@@ -27,8 +27,8 @@ COPY /src/server /usr/src/app
 #Final image ========================================
 FROM node:8.9-alpine
 WORKDIR /usr/src/app
-COPY --from=express-server /usr/src /usr/src
-COPY --from=angular-built /usr/src/dist /usr/dist
+COPY --from=express-server /usr/src/app /usr/src
+COPY --from=angular-built /usr/src/app/dist /usr/dist
 EXPOSE 3000
 CMD ["node", "./src/server/index.js"]
 
