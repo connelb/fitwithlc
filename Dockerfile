@@ -11,7 +11,7 @@ RUN apk update \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
 
 #Angular CLI
-#RUN npm install -g @angular/cli@1.6.5
+RUN npm install -g @angular/cli@1.6.5
 #COPY package.json ./
 #RUN npm install --silent
 #COPY . .
