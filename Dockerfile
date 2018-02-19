@@ -29,12 +29,13 @@ FROM node:8.9-alpine
 WORKDIR /usr
 RUN mkdir -p /usr/src
 RUN mkdir -p /usr/dist
-COPY --from=express-server /usr/src/app /usr/src/server
+COPY --from=express-server /usr/src/app /src/server
+#COPY --from=express-server /app /usr/src/app
 #COPY --from=express-server /usr/src/app /usr/src
 #COPY --from=angular-app /app/dist /usr/src/app
 #WORKDIR /usr/src/app/dist
 COPY --from=angular-built /usr/src/app/dist /dist
 EXPOSE 3000
-CMD ["node", "./src/server/index.js"]
+CMD ["node", "/src/server/index.js"]
 
 
