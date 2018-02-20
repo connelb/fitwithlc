@@ -50,12 +50,13 @@ COPY --from=express-server /app ./server
 #COPY --from=angular-app /app/dist /usr/src/app
 #WORKDIR /usr/src/app/dist
 
-COPY --from=angular-built /app/dist ../../dist
+COPY --from=angular-built /app ../../
 #COPY --from=angular-built /usr/src/app/dist /dist
 
 #'/usr/src/app/index.js'
 EXPOSE 3000
 #CMD [ "node", "index.js" ]
+#no such file or directory, stat '/usr/src/dist/index.html'
 CMD ["node", "./server/index.js"]
 
 
