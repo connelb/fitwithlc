@@ -52,8 +52,10 @@ COPY --from=express-server /app ./server
 
 COPY --from=angular-built /app/dist ../../dist
 #COPY --from=angular-built /usr/src/app/dist /dist
+
+#'/usr/src/app/index.js'
 EXPOSE 3000
-CMD [ "node", "index.js" ]
-#CMD ["node", "/src/server/index.js"]
+#CMD [ "node", "index.js" ]
+CMD ["node", "./server/index.js"]
 
 
