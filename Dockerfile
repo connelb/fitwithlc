@@ -31,16 +31,16 @@ RUN npm install --production --silent
 FROM node:8.9-alpine
 WORKDIR /usr/src/app
 #RUN mkdir -p /usr/src/app/dist
-#RUN mkdir -p /usr/src/app/server
+RUN mkdir -p /usr/src/app/server
 #LABEL author="John Papa"
 COPY --from=angular-built /usr/src/app/dist .
-#COPY --from=express-server /usr/src/app/server /usr/src/app/server
+COPY --from=express-server /usr/src/app /usr/src/app/server
 EXPOSE 3000
 #Cannot find module '/usr/src/app/server/index.js
 #Cannot find module '/usr/src/app/server/index.js'
 #Cannot find module '/usr/src/app/server/index.js'
 #
-CMD [ "ng", "serve" ]
+CMD [ "node", "server/index.js" ]
 
 
 #CMD node /usr/src/app/index.js
