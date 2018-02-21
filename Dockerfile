@@ -33,13 +33,14 @@ WORKDIR /usr/src/app
 RUN mkdir -p /usr/src/app/dist
 RUN mkdir -p /usr/src/app/server
 #LABEL author="John Papa"
-COPY --from=angular-built /usr/src/app /usr/src/app/dist
+COPY --from=angular-built /usr/src/app /usr/src/app
 COPY --from=express-server /usr/src/app /usr/src/app/server
 EXPOSE 3000
 #Cannot find module '/usr/src/app/server/index.js
 #Cannot find module '/usr/src/app/server/index.js'
 #Cannot find module '/usr/src/app/server/index.js'
 #no such'/usr/src/dist/index.html'
+#no such file or directory, stat '/usr/src/dist/index.html'
 CMD [ "node", "server/index.js" ]
 
 
