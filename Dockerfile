@@ -20,20 +20,27 @@ COPY . .
 RUN ng build --prod --build-optimizer
 
 #Express server =====================================
-FROM node:8.9-alpine as express-server
-WORKDIR /usr/src/app/server
-COPY /src/server .
+FROM node:8.9.3-alpine as express-server
+RUN mkdir -p /usr/src/app
+COPY ./src/server /usr/src/app/
+WORKDIR /usr/src/app
 RUN npm install --production --silent
 
 
 #Final image ===================================== 
 FROM node:8.9-alpine
 WORKDIR /usr/src/app
-RUN mkdir -p /dist
-RUN mkdir -p /server
+#RUN mkdir -p /usr/src/app/dist
+#RUN mkdir -p /usr/src/app/server
 #LABEL author="John Papa"
-COPY --from=angular-built /usr/src/app/dist /dist
-COPY --from=express-server /usr/src/app/server /server
+COPY --from=angular-built /usr/src/app/dist .
+#COPY --from=express-server /usr/src/app/server /usr/src/app/server
 EXPOSE 3000
+#Cannot find module '/usr/src/app/server/index.js
 #Cannot find module '/usr/src/app/server/index.js'
-CMD [ "node", "server/index.js" ]
+#Cannot find module '/usr/src/app/server/index.js'
+#
+CMD [ "ng", "serve" ]
+
+
+#CMD node /usr/src/app/index.js
