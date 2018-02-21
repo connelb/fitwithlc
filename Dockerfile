@@ -29,19 +29,20 @@ RUN npm install --production --silent
 
 #Final image ===================================== 
 FROM node:8.9-alpine
-WORKDIR /usr/src/app
-RUN mkdir -p /usr/src/app/dist
-RUN mkdir -p /usr/src/app/server
+WORKDIR /usr/src/client
+#RUN mkdir -p /usr/src/app/dist
+RUN mkdir -p /usr/src/client/server
 #LABEL author="John Papa"
-COPY --from=angular-built ./dist ./dist
-COPY --from=express-server /usr/src/app /usr/src/app/server
+COPY --from=angular-built . .
+COPY --from=express-server /usr/src/app /usr/src/client/server
 EXPOSE 3000
 #Cannot find module '/usr/src/app/server/index.js
 #Cannot find module '/usr/src/app/server/index.js'
 #Cannot find module '/usr/src/app/server/index.js'
 #no such'/usr/src/dist/index.html'
 #no such file or directory, stat '/usr/src/dist/index.html'
-CMD [ "node", "server/index.js" ]
+#no such file or directory, stat '/usr/src/dist/index.html'
+CMD [ "node", "./server/index.js" ]
 
 
 #CMD node /usr/src/app/index.js
