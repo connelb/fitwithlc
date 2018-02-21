@@ -19,8 +19,20 @@ RUN npm install --silent
 COPY . .
 RUN ng build --prod --build-optimizer
 
-FROM nginx:alpine
-LABEL author="John Papa"
-COPY --from=angular-built /usr/src/app/dist /usr/share/nginx/html
-EXPOSE 80 443
-CMD [ "nginx", "-g", "daemon off;" ]
+#Express server =====================================
+FROM node:8.9-alpine as express-server
+WORKDIR /usr/src/app
+RUN mkdir -p /src/server
+COPY /src/server /src/server
+
+
+#Final image 
+FROM node:8.9-alpine
+WORKDIR /usr/src/app
+RUN mkdir -p /dist
+RUN mkdir -p /server
+#LABEL author="John Papa"
+COPY --from=angular-built /usr/src/app/dist /dist
+COPY --from=express-server /src/server /server
+EXPOSE 3000
+CMD [ "node", "server/index.js" ]
