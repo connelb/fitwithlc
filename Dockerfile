@@ -28,12 +28,12 @@ RUN npm install --production --silent
 
 #Final image ===================================== 
 FROM node:8.9-alpine
-WORKDIR /usr/src/client
+WORKDIR /usr/src
 #RUN mkdir -p /usr/src/app/dist
-RUN mkdir -p /usr/src/client/server
+RUN mkdir -p /usr/src/server
 #LABEL author="John Papa"
-COPY --from=angular-built /usr/src/app/dist/* ../../
-COPY --from=express-server /usr/src/app /usr/src/client/server
+COPY --from=angular-built /usr/src/app/dist/* ../
+COPY --from=express-server /usr/src/app /usr/src/server
 EXPOSE 3000
 #Cannot find module '/usr/src/app/server/index.js
 #Cannot find module '/usr/src/app/server/index.js'
@@ -43,4 +43,5 @@ EXPOSE 3000
 #no such file or directory, stat '/usr/src/dist/index.html'
 #no such file or directory, stat '/usr/src/dist/index.html'
 #no such file or directory, stat '/usr/src/dist/index.html'  __dirname, '../../dist/index.html'
-CMD [ "node", "/usr/src/client/server/index.js" ]
+# Cannot find module './models/hero.model'
+CMD [ "node", "/usr/src/server/index.js" ]
