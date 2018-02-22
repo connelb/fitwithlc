@@ -22,10 +22,9 @@ RUN ng build --prod --build-optimizer
 #Express server =====================================
 FROM node:8.9.3-alpine as express-server
 RUN mkdir -p /usr/src/app
-COPY ./src/server /usr/src/app/
+COPY ./src/server/* /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install --production --silent
-
 
 #Final image ===================================== 
 FROM node:8.9-alpine
@@ -42,7 +41,4 @@ EXPOSE 3000
 #no such'/usr/src/dist/index.html'
 #no such file or directory, stat '/usr/src/dist/index.html'
 #no such file or directory, stat '/usr/src/dist/index.html'
-CMD [ "node", "./server/index.js" ]
-
-
-#CMD node /usr/src/app/index.js
+CMD [ "node", "/usr/src/client/server/index.js" ]
