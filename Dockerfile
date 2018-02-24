@@ -27,12 +27,22 @@ RUN ng build --prod --build-optimizer
 #RUN npm install --production --silent
 #COPY . .
 
+
+#FROM node:8.9.3-alpine
+#RUN mkdir -p /usr/src/app
+#COPY ./app/* /usr/src/app/
+#WORKDIR /usr/src/app
+#RUN npm install
+#CMD node /usr/src/app/index.js
+
 FROM node:8.9.3-alpine as express-server
 RUN mkdir -p /usr/src/app
 COPY ./src/server/* /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install
 #CMD node /usr/src/app/index.js
+
+
 
 #Final image =====================================@@@@@@@@@ 
 FROM node:8.9-alpine
@@ -48,4 +58,5 @@ EXPOSE 3000
 # Cannot find module './models/hero.model' (/usr/src/server/hero.service.js /usr/src/server/routes.js
 #Error: Cannot find module 'express'
 #Error: Cannot find module '/usr/src/server/index.js'
-CMD [ "node", "/usr/src/server/index.js" ]
+CMD [ "ng", "serve" ]
+#CMD [ "node", "/usr/src/server/index.js" ]
