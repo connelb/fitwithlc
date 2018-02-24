@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ./src/server/package.json /usr/src/app/
+COPY ./src/server/* /usr/src/app/
 RUN npm install
 
 # Bundle app source
@@ -14,4 +14,4 @@ COPY . /usr/src/app
 EXPOSE 3000
 CMD [ "npm", "start" ]
 
-#SendStream.error (/usr/src/server/node_modules/send/index.js:270:31)
+#Error: Cannot find module '/usr/src/app/app.js'
