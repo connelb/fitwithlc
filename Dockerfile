@@ -27,7 +27,7 @@ WORKDIR /usr/src/app
 RUN npm install --production --silent
 COPY . .
 
-#Final image =====================================@@@@@ 
+#Final image =====================================@@@@@@@@@ 
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/server
 WORKDIR /usr/src/server
