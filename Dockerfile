@@ -63,5 +63,5 @@ EXPOSE 3000
 #Error: Cannot find module 'express'
 #Error: Cannot find module '/usr/src/server/index.js'
 #CMD [ "ng", "serve" ]
-CMD [ "npm", "start" ]
-#CMD [ "node", "/usr/src/server/index.js" ]
+#CMD [ "npm", "start" ]
+CMD [ "node", "/usr/src/server/index.js" ]
