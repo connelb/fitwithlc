@@ -6,7 +6,7 @@ app.use(morgan('combined'));
 
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
+  res.sendFile(__dirname + './client/index.html')
 });
 
 var listener = app.listen(process.env.PORT || 80, function() {
