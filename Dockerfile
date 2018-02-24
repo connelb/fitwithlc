@@ -39,4 +39,5 @@ COPY --from=express-server /usr/src/app/* /usr/src/server/
 EXPOSE 3000
 #no such file or directory, stat '/usr/src/dist/index.html'  __dirname, '../../dist/index.html'
 # Cannot find module './models/hero.model' (/usr/src/server/hero.service.js /usr/src/server/routes.js
+#Error: Cannot find module 'express'
 CMD [ "node", "/usr/src/server/index.js" ]

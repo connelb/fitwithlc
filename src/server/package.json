@@ -1,20 +1,12 @@
-{
-    "name": "angular-cosmosdb",
-    "version": "0.0.0",
-    "license": "MIT",
-    "scripts": {
-      "start": "node index.js"
-    },
-    "private": true,
+  {
+    "name": "aci-helloworld",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
     "dependencies": {
-      "body-parser": "^1.17.1",
-      "core-js": "^2.5.3",
-      "cors": "^2.8.3",
-      "express": "^4.15.2",
-      "express-jwt": "^5.3.0",
-      "jwks-rsa": "^1.1.1",
-      "method-override": "^2.3.8",
-      "mongoose": "^4.13.7"
+      "express": "^4.14.0",
+      "morgan": "^1.8.2"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "author": ""
   }
