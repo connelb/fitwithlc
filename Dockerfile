@@ -14,4 +14,4 @@ COPY . /usr/src/app
 EXPOSE 3000
 CMD [ "npm", "start" ]
 
-#Error: Cannot find module '/usr/src/app/app.js'
+# no such file or directory, stat '/usr/src/app/dist/index.html'
