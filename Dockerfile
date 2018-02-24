@@ -43,7 +43,6 @@ RUN npm install
 #CMD node /usr/src/app/index.js
 
 
-
 #Final image =====================================@@@@@@@@@ 
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/server
