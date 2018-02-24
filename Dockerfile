@@ -41,7 +41,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ./src/server/package.json /usr/src/app/
+COPY ./src/server/* /usr/src/app/
 RUN npm install
 
 # Bundle app source
