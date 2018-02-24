@@ -55,7 +55,7 @@ WORKDIR /usr/src/server
 #RUN mkdir -p /usr/src/app/dist
 
 #LABEL author="John Papa"
-COPY --from=angular-built /usr/src/app/dist/* ../../
+#COPY --from=angular-built /usr/src/app/dist/* ../../
 COPY --from=express-server /usr/src/app /usr/src/server/
 EXPOSE 3000
 #no such file or directory, stat '/usr/src/dist/index.html'  __dirname, '../../dist/index.html'
@@ -64,4 +64,4 @@ EXPOSE 3000
 #Error: Cannot find module '/usr/src/server/index.js'
 #CMD [ "ng", "serve" ]
 #CMD [ "npm", "start" ]
-CMD [ "node", "/usr/src/server/index.js" ]
+CMD [ "node", "index.js" ]
