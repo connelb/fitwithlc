@@ -13,3 +13,5 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
+
+#SendStream.error (/usr/src/server/node_modules/send/index.js:270:31)
