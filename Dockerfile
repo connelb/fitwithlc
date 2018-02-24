@@ -55,13 +55,14 @@ WORKDIR /usr/src/server
 #RUN mkdir -p /usr/src/app/dist
 
 #LABEL author="John Papa"
-#COPY --from=angular-built /usr/src/app/dist/* ../../
+COPY --from=angular-built /usr/src/app/dist/* ../../
 COPY --from=express-server /usr/src/app /usr/src/server/
 EXPOSE 3000
 #no such file or directory, stat '/usr/src/dist/index.html'  __dirname, '../../dist/index.html'
 # Cannot find module './models/hero.model' (/usr/src/server/hero.service.js /usr/src/server/routes.js
 #Error: Cannot find module 'express'
 #Error: Cannot find module '/usr/src/server/index.js'
+#stat '/usr/src/server/index.html'
 #CMD [ "ng", "serve" ]
 #CMD [ "npm", "start" ]
 CMD [ "node", "index.js" ]
