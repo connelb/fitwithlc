@@ -51,7 +51,7 @@ COPY . /usr/src/app
 #Final image =====================================@@@@@@@@@ 
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/server
-WORKDIR /usr/src/
+WORKDIR /usr/src/server
 #RUN mkdir -p /usr/src/app/dist
 
 #LABEL author="John Papa"
@@ -63,5 +63,5 @@ EXPOSE 3000
 #Error: Cannot find module 'express'
 #Error: Cannot find module '/usr/src/server/index.js'
 #CMD [ "ng", "serve" ]
-#CMD [ "npm", "start" ]
-CMD [ "node", "/usr/src/server/index.js" ]
+CMD [ "npm", "start" ]
+#CMD [ "node", "/usr/src/server/index.js" ]
