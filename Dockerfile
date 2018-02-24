@@ -20,12 +20,19 @@ COPY . .
 RUN ng build --prod --build-optimizer
 
 #Express server =====================================
+#FROM node:8.9.3-alpine as express-server
+#RUN mkdir -p /usr/src/app
+#COPY ./src/server/* /usr/src/app/
+#WORKDIR /usr/src/app
+#RUN npm install --production --silent
+#COPY . .
+
 FROM node:8.9.3-alpine as express-server
 RUN mkdir -p /usr/src/app
-COPY ./src/server/* /usr/src/app/
+COPY ./app/* /usr/src/app/
 WORKDIR /usr/src/app
-RUN npm install --production --silent
-COPY . .
+RUN npm install
+#CMD node /usr/src/app/index.js
 
 #Final image =====================================@@@@@@@@@ 
 FROM node:8.9-alpine
