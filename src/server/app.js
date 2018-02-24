@@ -10,7 +10,7 @@ var port = process.env.PORT || 3000;
 server.listen(port);
 
 // Telling our application to use the public folder to serve up static files.
-app.use('../../dist/', express.static('dist'));
+app.use('../../dist/', express.static('../../dist'));
 
 
 // When a connection is made to the app, serve up index.html

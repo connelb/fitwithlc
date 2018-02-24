@@ -15,3 +15,4 @@ EXPOSE 3000
 CMD [ "npm", "start" ]
 
 # no such file or directory, stat '/usr/src/app/dist/index.html'
+#no such file or directory, stat '/usr/src/app/dist/index.html'
