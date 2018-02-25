@@ -13,10 +13,9 @@ server.listen(port);
 //app.use('../../dist/', express.static('../../dist'));
 app.use('/dist/', express.static('dist'));
 
-
 // When a connection is made to the app, serve up index.html gest
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/dist/index.html');
   // stat '/usr/src/app/usr/src/app/dist/index.html'
 });
-console.log('Magic happens on port ' + port);
+console.log('Magic happens on port11 ' + port);
