@@ -16,8 +16,8 @@ app.use('/dist/', express.static('dist'));
 // When a connection is made to the app, serve up index.html gest
 app.get('/', function (req, res) {
   //res.sendFile(__dirname + '/public/index.html');
-  //res.sendFile(__dirname + '/src/server/dist/index.html');//works!!
-  res.sendFile(__dirname + './dist/index.html');//works!!
+  res.sendFile(__dirname + '/src/server/dist/index.html');//works!!
+  //res.sendFile(__dirname + './dist/index.html');//works!!
   // stat '/usr/src/app/usr/src/app/dist/index.html'
   //: no such file or directory, stat '/usr/src/app/dist/index.html'
 });
