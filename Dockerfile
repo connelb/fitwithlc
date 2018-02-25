@@ -35,6 +35,7 @@ FROM node:8.9-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY --from=angular-built /usr/src/app/src/server/dist/* /usr/src/app/dist/
+#'/usr/src/app/src/server/dist/index.html'
 COPY --from=express-server /usr/src/app/ /usr/src/app/
 
 EXPOSE 3000
