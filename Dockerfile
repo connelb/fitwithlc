@@ -13,7 +13,9 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
+#CMD [ "node", "app.js" ]
 
 # no such file or directory, stat '/usr/src/app/dist/index.html'
 #no such file or directory, stat '/usr/src/app/dist/index.html'
 #no such file or directory, stat '/usr/src/app./dist/index.html'
+#: no such file or directory, stat '/usr/src/app/dist/index.html'

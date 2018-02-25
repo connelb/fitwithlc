@@ -17,7 +17,8 @@ app.use('/dist/', express.static('dist'));
 app.get('/', function (req, res) {
   //res.sendFile(__dirname + '/public/index.html');
   //res.sendFile(__dirname + '/src/server/dist/index.html');//works!!
-  res.sendFile(__dirname + '/dist/index.html');//works!!
+  res.sendFile(__dirname + './dist/index.html');//works!!
   // stat '/usr/src/app/usr/src/app/dist/index.html'
+  //: no such file or directory, stat '/usr/src/app/dist/index.html'
 });
 console.log('Magic happens on port11 ' + port);
