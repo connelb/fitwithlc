@@ -32,7 +32,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-COPY --from=angular-built /usr/src/app/dist /usr/src/app/dist/
+COPY --from=angular-built /usr/src/app/* /usr/src/app/dist/
 
 #Final image ========================================
 
