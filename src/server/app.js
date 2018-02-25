@@ -14,7 +14,7 @@ server.listen(port);
 app.use('/dist/', express.static('dist'));
 
 
-// When a connection is made to the app, serve up index.html
+// When a connection is made to the app, serve up index.html gest
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/usr/src/app/dist/index.html');
 });
