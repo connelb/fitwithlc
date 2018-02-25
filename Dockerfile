@@ -20,21 +20,22 @@ RUN ng build --prod --build-optimizer
 
 #Express server =======================================
 FROM node:8.9-alpine as express-server
-
-# Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
-# Install app dependencies
 COPY ./src/server/* /usr/src/app/
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
+#COPY . /usr/src/app
 
-COPY --from=angular-built /usr/src/app/* /usr/src/app/dist/
+#COPY --from=angular-built /usr/src/app/* /usr/src/app/dist/
 
 #Final image ========================================
+FROM node:8.9-alpine
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY --from=angular-built /usr/src/app/dist/* /usr/src/app/dist/
+COPY --from=express-server /usr/src/app/* /usr/src/app/
 
 EXPOSE 3000
 #CMD [ "npm", "start" ]
