@@ -16,6 +16,6 @@ app.use('/dist/', express.static('dist'));
 
 // When a connection is made to the app, serve up index.html
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/dist/index.html');
+  res.sendFile(__dirname + '/usr/src/app/dist/index.html');
 });
 console.log('Magic happens on port ' + port);
