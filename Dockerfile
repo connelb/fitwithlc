@@ -34,13 +34,12 @@ COPY . /usr/src/app
 FROM node:8.9-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY --from=angular-built /usr/src/app/dist/ /usr/src/app/dist/
-#'/usr/src/app/src/server/dist/index.html'
 COPY --from=express-server /usr/src/app/ /usr/src/app/
-
-EXPOSE 3000
-#CMD [ "npm", "start" ]
+COPY --from=angular-built /usr/src/app/dist/ /usr/src/app/dist/
+ENV PORT 80
+#ENV API_URL we-could-set-this-here-as-default
 CMD [ "node", "app.js" ]
+
 # no such file or directory, stat '/usr/src/app/dist/index.html'
 #no such file or directory, stat '/usr/src/app/dist/index.html'
 #no such file or directory, stat '/usr/src/app./dist/index.html'
